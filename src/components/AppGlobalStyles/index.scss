@@ -1,0 +1,84 @@
+@import "normalize.css";
+
+:root {
+  --primary: #26c17e;
+  --primary-hover: #20a56a;
+  --primary-active: #1c9960;
+  --black: #000;
+  --white: #fff;
+  --text-color: #333;
+
+  --font-family: "Poppins", sans-serif;
+
+  --default-layout-width: 1150px;
+  --default-layout-horizontal-spacer: 24px;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: 1.6rem;
+  line-height: 1.5;
+  font-weight: 200;
+  color: var(--text-color);
+  text-rendering: optimizespeed;
+}
+
+// Font embeded
+@font-face {
+  font-family: Poppins;
+  src: url("/assets/fonts/Poppins-Thin.ttf");
+  font-weight: 100;
+}
+
+@font-face {
+  font-family: Poppins;
+  src: url("/assets/fonts/Poppins-ExtraLight.ttf");
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: Poppins;
+  src: url("/assets/fonts/Poppins-Light.ttf");
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: Poppins;
+  src: url("/assets/fonts/Poppins-Regular.ttf");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: Poppins;
+  src: url("/assets/fonts/Poppins-Medium.ttf");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: Poppins;
+  src: url("/assets/fonts/Poppins-SemiBold.ttf");
+  font-weight: 600;
+}
+
+button,
+input,
+[tabindex] {
+  outline: none;
+  border: none;
+  font-family: var(--font-family);
+}
+
+a {
+  color: var(--text-color);
+  text-decoration: none;
+}

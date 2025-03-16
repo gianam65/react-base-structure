@@ -1,0 +1,42 @@
+.app__switch-checkbox {
+    height: 0;
+    width: 0;
+    visibility: hidden;
+    &:checked + .app__switch-label .app__switch-button {
+        left: calc(100% - 3px);
+        transform: translateX(-100%);
+    }
+}
+.app__switch-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    width: 48px;
+    height: 28px;
+    background: #d5d5d5;
+    border-radius: 999px;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+    &.disabled {
+        background: #d5d5d5;
+        cursor: not-allowed;
+    }
+    &.active {
+        background: #317c76;
+    }
+    &:active .app__switch-button {
+        width: 18px;
+    }
+    & .app__switch-button {
+        content: '';
+        position: absolute;
+        top: 3px;
+        left: 3px;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        transition: 0.3s all ease-in-out;
+        background: #fff;
+    }
+}

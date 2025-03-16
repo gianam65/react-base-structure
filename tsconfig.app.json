@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "module": "esnext",
+    "allowJs": true,
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "esModuleInterop": true,
+    "target": "esnext",
+    "noImplicitAny": true,
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "allowImportingTsExtensions": true,
+    "outDir": "dist",
+    "baseUrl": "src",
+    "noEmit": true,
+    "paths": {
+      "@/*": ["*"] // Tất cả các đường dẫn bắt đầu bằng "@/" được ánh xạ vào thư mục gốc
+    },
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "types": ["vite/client", "node"]
+  },
+  "include": ["src/**/*", "./window.d.ts"],
+  "exclude": ["node_modules"]
+}
