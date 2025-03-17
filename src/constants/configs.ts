@@ -7,3 +7,7 @@ export enum APP_LAYOUT {
   LOGIN = "LOGIN",
   NOT_FOUND = "NOT_FOUND",
 }
+
+export enum APP_ROLE {
+  ADMIN = "admin",
+}

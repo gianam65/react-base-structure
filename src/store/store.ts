@@ -1,6 +1,6 @@
 import { Action, ThunkAction, configureStore } from "@reduxjs/toolkit";
 import { thunk } from "redux-thunk";
-import { appStateReducer, authenticateReducer, userReducer } from "./reducers";
+import { appStateReducer, userReducer } from "./reducers";
 import { persistReducer, persistStore } from "redux-persist";
 import { createCustomStorage } from "./custom-storage";
 import { combineReducers } from "@reduxjs/toolkit";
@@ -23,7 +23,6 @@ const persistConfig = {
 // Combine reducers
 const rootReducer = combineReducers({
   appState: appStateReducer,
-  authenticate: authenticateReducer,
   user: userReducer,
 });
 

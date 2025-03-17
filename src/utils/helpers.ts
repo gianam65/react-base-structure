@@ -46,6 +46,9 @@ export const flatArrByKey = (
   return arr.flatMap((item) => item[key]);
 };
 
+export const sleep = (ms: number) =>
+  new Promise((resolve) => setTimeout(resolve, ms));
+
 // export const createDynamicRoute = (path: string) => {
 //   return React.lazy(() => import(`./pages/${path}`));
 // };

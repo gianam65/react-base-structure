@@ -1,12 +1,16 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { ROUTES, RouteConfig } from "@/constants";
-import AppGlobalStyles from "@/components/AppGlobalStyles";
-import { AppBaseLayout, AppLoginLayout, AppNotFoundLayout } from "@/layouts";
-import { APP_LAYOUT } from "@/constants";
 import { ErrorBoundary } from "react-error-boundary";
+
+import { AppBaseLayout, AppLoginLayout, AppNotFoundLayout } from "@/layouts";
+import { ROUTES, RouteConfig } from "@/constants";
+import { PrivateRoute } from "@/hoc";
+import { APP_LAYOUT } from "@/constants";
+
 import AppErrorFallback from "@/components/AppErrorFallback";
+import AppGlobalStyles from "@/components/AppGlobalStyles";
+import AppLoading from "@/components/AppLoading";
 
 const queryClient = new QueryClient();
 const { VITE_BASE_NAME = "/" } = import.meta.env;
@@ -22,16 +26,25 @@ const getLayoutForRoute = (routeLayout: APP_LAYOUT) => {
 
 const renderRoute = (route: RouteConfig) => {
   const LayoutComponent = getLayoutForRoute(route.layout);
+  const RouteComponent = route.requiredRole
+    ? () => (
+        <PrivateRoute
+          component={route.component}
+          requiredRole={route.requiredRole}
+        />
+      )
+    : route.component;
+
   return (
     <Route
       key={route.path}
       path={route.path}
       element={
         <ErrorBoundary FallbackComponent={AppErrorFallback}>
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<AppLoading fullScreen size="large" />}>
             <AppGlobalStyles>
               <LayoutComponent>
-                <route.component />
+                <RouteComponent />
               </LayoutComponent>
             </AppGlobalStyles>
           </Suspense>

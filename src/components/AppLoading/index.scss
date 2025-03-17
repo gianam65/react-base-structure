@@ -1,0 +1,85 @@
+.app__loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+
+  &.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--primary-bg-color);
+    z-index: 9999;
+  }
+}
+
+.loading-text {
+  margin-top: 1rem;
+  font-size: 1.4rem;
+  color: #666;
+}
+
+.spinner {
+  --spinner-color: var(--primary);
+  position: relative;
+
+  &.small {
+    width: 24px;
+    height: 24px;
+  }
+
+  &.medium {
+    width: 40px;
+    height: 40px;
+  }
+
+  &.large {
+    width: 60px;
+    height: 60px;
+  }
+
+  animation: spinner-rotate 1.4s linear infinite;
+}
+
+.spinner-blade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  width: 20%;
+  height: 20%;
+  background-color: var(--spinner-color);
+  border-radius: 50%;
+  animation: spinner-fade 1s linear infinite;
+
+  @for $i from 1 through 5 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{($i - 1) / 5}s;
+      transform: rotate(#{($i - 1) * 30}deg) translateY(-150%);
+    }
+  }
+}
+
+@keyframes spinner-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinner-fade {
+  0%,
+  100% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 1;
+  }
+}
